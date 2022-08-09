@@ -2,6 +2,7 @@ package asyncjob
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"sync"
 )
@@ -74,4 +75,10 @@ func (g *group) runJob(ctx context.Context, j Job) error {
 		}
 	}
 	return nil
+}
+
+func Recover() {
+	if r := recover(); r != nil {
+		fmt.Println("WOHA! Program is panicking with value", r)
+	}
 }
